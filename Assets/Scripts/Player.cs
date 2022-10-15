@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    [SerializeField] HealthBar HealthBar;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float currentHealth;
 
-    HealthBar healthBar;
-
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        HealthBar.HealthChange(maxHealth);
     }
 
-    void Update()
+    public void HealthChange(float health)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
-    }
+            if (currentHealth + health >= maxHealth)
+                currentHealth = maxHealth;
+            else if (currentHealth + health <= 0)
+                currentHealth = 0;
+            else
+                currentHealth += health;
 
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        healthBar.SetHealth(currentHealth);
+        HealthBar.HealthChange(currentHealth);
     }
 }
