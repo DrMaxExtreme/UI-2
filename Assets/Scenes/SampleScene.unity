@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 3981797940649879325, guid: 98b51256968f9954e93c0614d20443b8, type: 3}
+      propertyPath: _speedChangeValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3981797940649879326, guid: 98b51256968f9954e93c0614d20443b8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
