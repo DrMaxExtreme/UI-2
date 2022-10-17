@@ -8,12 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxHealth = 100;
     [SerializeField] private float _currentHealth;
 
-    public float MaxHealth => _maxHealth;
-
     private void Start()
     {
         _currentHealth = _maxHealth;
-        HealthBar.HealthChanger(_maxHealth);
+        HealthBar.HealthChanger(_maxHealth, _maxHealth);
     }
 
     public void HealthChange(float health)
@@ -25,6 +23,6 @@ public class Player : MonoBehaviour
             else
                 _currentHealth += health;
 
-        HealthBar.HealthChanger(_currentHealth);
+        HealthBar.HealthChanger(_currentHealth, _maxHealth);
     }
 }

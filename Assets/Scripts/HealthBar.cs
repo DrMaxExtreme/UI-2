@@ -13,20 +13,20 @@ public class HealthBar : MonoBehaviour
 
     private Coroutine _healthChange;
 
-    public void HealthChanger(float newHealth)
+    public void HealthChanger(float newHealth, float maxHealth)
     {
         if (_healthChange != null) StopCoroutine(_healthChange);
 
-        _healthChange = StartCoroutine(HealthChange(newHealth));
+        _healthChange = StartCoroutine(HealthChange(newHealth, maxHealth));
     }
 
-    private IEnumerator HealthChange(float targeHealth)
+    private IEnumerator HealthChange(float targeHealth, float maxHealth)
     {
         while (Slider.value != targeHealth)
         {
             Slider.value = Mathf.MoveTowards(Slider.value, targeHealth, _speedChangeValue * Time.deltaTime);
 
-            _countDisplay.text = Mathf.Round(Slider.value) + "/" + _player.MaxHealth;
+            _countDisplay.text = Mathf.Round(Slider.value) + "/" + maxHealth;
 
             yield return null;
         }
