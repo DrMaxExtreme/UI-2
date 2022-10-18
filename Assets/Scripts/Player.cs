@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public HealthBar HealthBar;
+    [SerializeField] private HealthBar _healthBar;
     [SerializeField] private float _maxHealth = 100;
     [SerializeField] private float _currentHealth;
 
     private void Start()
     {
         _currentHealth = _maxHealth;
-        HealthBar.HealthChanger(_maxHealth, _maxHealth);
+        _healthBar.HealthChanger(_maxHealth, _maxHealth);
     }
 
     public void HealthChange(float health)
@@ -23,6 +23,6 @@ public class Player : MonoBehaviour
             else
                 _currentHealth += health;
 
-        HealthBar.HealthChanger(_currentHealth, _maxHealth);
+        _healthBar.HealthChanger(_currentHealth, _maxHealth);
     }
 }
